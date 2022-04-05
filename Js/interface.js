@@ -1,3 +1,4 @@
+names = ['Player 1', 'Player 2'];
 document.addEventListener('DOMContentLoaded', ()=>{
     let squares = document.querySelectorAll('.square');
     squares.forEach((square)=>{
@@ -9,19 +10,17 @@ function handleClick(event){
     let position = square.id;
     if(handleMove(position)){
         setTimeout(()=>{
-            let result = document.getElementById('result');
-            result.style.display = 'inline-block';
+            resultado(playerTime);
+            score(playerTime);
         },10);
     }
     updateSquare(position);
-    
 }
 function updateSquare(position){
     let square = document.getElementById(position.toString());
     let symbol = board[position];
     square.innerHTML = `<div class='${symbol}'></div>`
     turnIndicator();
-    score(playerTime);
 }
 function turnIndicator (){
     let player1Indicator = document.getElementById('player1_name');
@@ -43,13 +42,41 @@ function score(playerTime){
     player2 = document.getElementById("player2_score");
     player1_score = parseInt(player1.innerHTML);
     player2_score = parseInt(player2.innerHTML);
-    if (player_time) {
+    if (playerTime) {
         player2_score += 1;
         player2.innerHTML = player2_score;
       } else {
         player1_score += 1;
         player1.innerHTML = player1_score;
       }
+}
+function playerName(){
+    let player1 = document.getElementById("player1_name");
+    let player2 = document.getElementById("player2_name");
+    player1.addEventListener("focusout", () => {
+        if (player1.value == "") {
+          names[0] = "Player 1";
+        } else {
+          names[0] = player1.value;
+        }
+      });
+    player2.addEventListener("focusout", () => {
+        if (player2.value == "") {
+          names[1] = "Player 2";
+        } else {
+          names[1] = player2.value;
+        }
+    });
+}
+playerName();
+function resultado(vitorioso){
+    let result = document.getElementById('result');
+    let winner = document.getElementById('winner');
+    let sequence = document.getElementById('sequence');
+    let chain = sequenceWinner.join([(separator = ', ')]);
+    result.style.display = 'block';
+    winner.innerHTML = names[vitorioso];
+    sequence.innerHTML = `Sequência Campeã: ${chain}`;
 }
 function closeResult(){
     let result = document.getElementById('result');

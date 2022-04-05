@@ -13,6 +13,7 @@ let winStates = [
     [0, 4, 8],
     [2, 4, 6],
 ];
+let sequenceWinner;
 
 function handleMove(position){
     if (gameOver){
@@ -37,6 +38,7 @@ function isWin(){
         let pos1 = seq[0];
         let pos2 = seq[1];
         let pos3 = seq[2];
+        sequenceWinner = seq;
         if (board[pos1] == board[pos2] &&
             board[pos1] == board[pos3] &&
             board[pos1] != ''){

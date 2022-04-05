@@ -21,7 +21,7 @@ body{
 }
 
 .square:hover {
-    background-color: rgba(255, 255, 255, 0.432);
+    background-color: white;
     box-shadow: 0 0 30px rgb(17, 17, 216);
     cursor: pointer;
   }
@@ -79,6 +79,7 @@ body{
 
 .name:hover{
     border: 2px solid rgb(17, 17, 216);
+    box-shadow: 0 0 30px rgb(17, 17, 216);
 }
 
 .score{
@@ -107,6 +108,7 @@ button:hover{
     background-color: rgb(17, 17, 216);
     color: black;
     border: 2px solid white;
+    box-shadow: 0 0 30px rgb(17, 17, 216);
 }
 
 .result{
@@ -146,4 +148,16 @@ button:hover{
     cursor: pointer;
     background-color: rgb(17, 17, 216);
     color: black;
+}
+
+#winner{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#sequence{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
 }
